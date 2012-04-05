@@ -1,0 +1,10 @@
+= title "Prevzemna mesta"
+%table
+  %thead
+    %tr
+      %th
+        %span Prevzemno mesto
+  %tbody= render collection
+
+- admin_section do
+  = link_to "Dodaj prevzemno mesto", new_pickup_path

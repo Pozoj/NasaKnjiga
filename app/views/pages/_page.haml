@@ -1,0 +1,7 @@
+- url = section_page_path(page.section, page)
+%li
+  - if page.photo and page.photo.photo.file?
+    = link_to image_tag(page.photo.photo.url(:mini_square)), url
+  = link_to page, url
+  - if page.subtitle?
+    %span.subtitle== (#{page.subtitle})

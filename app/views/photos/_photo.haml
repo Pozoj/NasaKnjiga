@@ -1,0 +1,7 @@
+%li.photo
+  - if photo.photo.file?
+    = image_tag photo.photo.url(:small_square)
+    .book_sized_url= photo.photo.url(:book)
+    
+    - admin_section do
+      = link_to "Odstrani", [photo.photographable, photo], :method => :delete, :confirm => "Ste prepričani?"

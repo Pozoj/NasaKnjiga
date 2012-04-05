@@ -1,0 +1,90 @@
+.admin_head
+  %h2 Print naročil objavljenih strani
+
+  - form_tag print_orders_path, :method => :get do
+    %h3 Nastavitev datuma
+    = select_date @date
+    = hidden_field_tag :order_id, params[:order_id]
+    = submit_tag
+
+- @orders.each do |order|
+  .page
+    .address
+      %p== #{order.page.contact_name} #{order.page.contact_surname}
+      %p== #{order.street} #{order.street_number}#{order.street_suffix}
+      %p== #{order.post_id} #{order.post}
+    
+    .notice
+      %p
+        Pozdravljeni
+        %strong== #{order.page.contact_name} #{order.page.contact_surname}!
+      %p
+        Pred Vami je izpis podatkov za knjigo
+        %strong== #{order.page.book.kind}: #{order.page.book.title}, 
+        ki ga prosimo pozorno preberite in morebitne napake sporočite do
+        %strong== #{@date.strftime("%d.%m.%Y")}.
+        %br
+        Napake lahko sporočite na:
+        %ul
+          %li
+            %strong Elektronsko pošto: 
+            == #{order.page.book.email}@pozoj.si
+          %li
+            %strong Naslov:
+            Pozoj d.o.o., Efenkova cesta 61, 3320 Velenje
+      %p
+        V primeru, da se nam ne boste oglasili, smatramo da v podatkih ni napak.
+      %p
+        Po naši evidenci ste do danes naročili
+        %strong== #{pluralize_prints order.quantity} knjige.
+        
+      %p.signature
+        Lep pozdrav, Peter Rebernik
+        
+      
+    .data
+      .left
+        - if order.book_title
+          .field
+            .description Naslov knjige
+            .value= order.book_title
+        - if order.page.subtitle?
+          .field
+            .description Podnaslov strani
+            .value= order.page.subtitle
+
+        - if order.address
+          .field
+            .description Naslov
+            .value= order.address
+
+        - if order.page.phone? and order.page.phone_published?
+          .field
+            .description= order.page.field :phone
+            .value= order.page.phone
+
+        - if order.page.email? and order.page.email_published?
+          .field
+            .description= order.page.field :email
+            .value= link_to_email order.page.email
+      .right
+        - if order.photo and order.photo.photo.file?
+          .field
+            - if order.page.photo and order.page.photo != order.photo
+              .description Fotografija na naslovnici
+            - else
+              .description Fotografija na naslovnici in v knjigi
+            .value= image_tag order.photo.photo.url(:book)
+        - if order.page.photo and order.page.photo != order.photo
+          .field
+            .description Fotografija v knjigi
+            .value= image_tag order.page.photo.photo.url(:book)
+
+      - if order.page.body?
+        .field.body
+          .description
+            = order.page.field :body
+            (objavljeno v knjigi)
+          .value= order.page.body_html
+                    
+    %hr

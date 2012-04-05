@@ -1,0 +1,14 @@
+= title "Tipi knjig"
+
+- admin_section do
+  = link_to "Dodaj tip knjige", new_resource_path
+
+- unless collection.empty?
+  %table
+    %thead
+      %tr
+        %th 
+          %span Naziv
+        %th
+          %span Št. knjig
+    %tbody= render collection

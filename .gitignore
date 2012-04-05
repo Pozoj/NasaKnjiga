@@ -1,0 +1,12 @@
+.DS_Store
+.eprj
+config/initializers/paperclip.rb
+log/*.log
+tmp/**/*
+nbproject
+config/database.yml
+db/*.sqlite3
+public/assets/
+webrat-*.html
+rerun.txt
+public/stylesheets/*.css

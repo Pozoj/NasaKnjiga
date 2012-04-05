@@ -1,0 +1,6 @@
+%tr
+  %td= pickup
+  %td
+    - admin_section do
+      = link_to "Uredi", edit_pickup_path(pickup)
+      = link_to "Odstrani", pickup, :method => :delete, :confirm => destroy_confirmation(pickup)

@@ -1,0 +1,11 @@
+%li[section]
+  .section_title
+    = link_to section, section_pages_path(section)
+    - admin_section do
+      = link_to "Uredi", edit_section_path(section)
+      = link_to "Odstrani", section, :method => :delete, :confirm => destroy_confirmation(section)
+    %span.dots
+      - pages_count = editor?? section.pages.count : section.pages.published.count
+      = dots(pluralize_pages(pages_count).size + section.to_s.size) 
+  .section_content
+    = pluralize_pages pages_count

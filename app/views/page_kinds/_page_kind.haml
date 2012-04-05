@@ -1,0 +1,3 @@
+%li.page_kind
+  = link_to page_kind, book_kind_page_kind_path(page_kind.book_kind, page_kind)
+  %em== (ima #{pluralize_pages page_kind.pages.size})

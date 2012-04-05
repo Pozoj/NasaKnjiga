@@ -1,0 +1,42 @@
+= title "Izvoz naročil"
+
+%p 
+  V sistemu imamo za knjigo
+  %strong= current_book
+  zabeleženih 
+  %strong= @orders.size
+  naročil.
+  
+- unless @orders_without_photos.empty?
+  %h3 Pozor
+  %p
+    Od teh jih je
+    %strong= @orders_without_photos.size
+    brez fotografije.
+    Dokler ne dodate fotografij tem naročilom, izvoz ne more iti naprej.
+  %table
+    %thead
+      %tr
+        %th 
+          %span Naslov knjige
+        %th 
+          %span Naročnik
+        %th 
+          %span Naslov
+    %tbody
+      - @orders_without_photos.each do |order|
+        %tr
+          %td= order.book_title
+          %td= order.full_name
+          %td= order.full_address
+          - if admin?
+            %td= link_to "Odpri naročilo", order
+- else
+  #export
+    %p
+      Kliknite tu za izvoz naročil in 
+      %strong počakajte 1 minuto, 
+      da se izvoz pripravi.
+    - user_section do
+      - if designer? and can_see?(current_book)
+        = link_to "Izvozi naročil", export_photos_sections_path

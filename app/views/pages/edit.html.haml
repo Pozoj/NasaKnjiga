@@ -1,0 +1,7 @@
+= title "Urejanje #{resource}"
+- if current_user.reviewer?
+  = render "reviewer_form"
+- else
+  = render "form"
+
+= link_to_back

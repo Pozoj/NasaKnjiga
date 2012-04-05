@@ -1,0 +1,5 @@
+- if flash and not flash.empty?
+  #flash
+    - flash.each do |key, value|
+      %p.flash{:id => key}= value
+    

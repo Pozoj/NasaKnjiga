@@ -1,0 +1,1 @@
+/webroot/nasaknjiga/shared/setup_load_paths.rb

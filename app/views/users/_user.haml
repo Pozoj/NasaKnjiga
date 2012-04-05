@@ -1,0 +1,11 @@
+%tr
+  %td= user.name
+  %td= user.surname
+  %td= user.email
+  %td= user.kind
+  %td= user.owned_pages.count
+  %td= user.books.count
+  %td= user.pages.count
+  %td
+    - admin_section do
+      = link_to "Odpri", user

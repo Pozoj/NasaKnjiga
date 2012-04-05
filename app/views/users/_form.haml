@@ -1,0 +1,28 @@
+= error_messages_for :user
+
+- form_for resource, :html => {:multipart => true} do |f|
+  %fieldset.delimiter
+    %legend Vrsta uporabnika    
+    .question= f.label :kind_id, User.human_attribute_name(:kind_id)
+    .answer= f.collection_select :kind_id, UserKind.all, :id, :name, :include_blank => true
+  .half.first.narrow
+    %fieldset
+      %legend Osebni podatki
+      .question= f.label :name, User.human_attribute_name(:name)
+      .answer= f.text_field :name
+    
+      .question= f.label :surname, User.human_attribute_name(:surname)
+      .answer= f.text_field :surname
+    
+  .half.second
+    %fieldset
+      %legend Prijavni podatki
+      .question= f.label :email, User.human_attribute_name(:email)
+      .answer= f.text_field :email
+
+      .question= f.label :password, User.human_attribute_name(:password)
+      .answer= f.password_field :password
+      
+    
+  %fieldset.submit
+    .submit= f.submit :Shrani

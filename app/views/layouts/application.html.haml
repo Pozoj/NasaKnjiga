@@ -1,0 +1,41 @@
+!!! strict
+%html
+  %head
+    %title= yield :title
+    = #stylesheet_link_tag "print"
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "print", :media => "print"
+    = javascript_include_tag :defaults, "prototype.uploadProgress.js", "lowpro", :cache => true
+    = yield :head
+  %body{body_attrs} 
+    #spinner{:style => 'display: none;'}
+      Osvežujem 
+      = image_tag 'ui/loader.gif'
+    #header
+      - if current_book?
+        %h1= link_to current_book, root_path(:subdomain => current_book.subdomain)
+        %h2= current_book.kind
+        %h3= link_to "Naša knjiga", index_path(:subdomain => false)
+      - else
+        %h1= link_to "Naša knjiga", root_path
+        
+      = render "layouts/menu"
+      #authentication
+        - if current_user
+          %p.logged_in
+            Prijavljen kot
+            = link_to current_user, session_path(:subdomain => false), :class => "user"
+          %p.log_out= link_to "Odjava", session_path(:subdomain => false), :method => :delete
+        - else
+          %p.log_in= link_to "Prijava", new_session_path(:subdomain => false)
+          #new_session_form= render :partial => "sessions/form"
+        
+
+    #content
+      = render "shared/flash", :flash => flash
+      = yield
+      
+    #footer
+      %p 
+        Naša knjiga je storitev podjetja 
+        = link_to "Pozoj d.o.o.", "http://pozoj.si"

@@ -1,0 +1,9 @@
+- hide = object ? {:style => "display:none;"} : {}
+- form_for User.new, :url => session_path(:subdomain => false), :html => hide do |f|
+  %fieldset
+    .question= f.label :email, "E-mail"
+    .answer= f.text_field :email
+    .question= f.label :password, "Geslo"
+    .answer= f.password_field :password
+    
+    .submit= f.submit :Prijava

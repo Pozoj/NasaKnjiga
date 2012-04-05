@@ -1,0 +1,30 @@
+- form_for [resource.section, resource], :html => {:multipart => true} do |f|
+  = f.error_messages
+  .submit= f.submit :Shrani
+  
+  %fieldset#review
+    %legend Besedilo
+    
+    .question= f.label :body_original, "#{resource.field(:body)} original"
+    .answer.body_original
+      = f.hidden_field :body_original
+      = resource.body_original
+    
+    .question= f.label :body, "#{resource.field(:body)} lektorirano"
+    .answer= f.text_area :body, :rows => (current_book and current_book.rows?? current_book.rows : 80), :cols => (current_book and current_book.cols?? current_book.cols : 15), :class => :straight
+  
+  %fieldset
+    %legend Lektor
+    
+    .question= f.label :reviewed, "Lektorirano"
+    .answer= f.check_box :reviewed
+    
+    .question= f.label :reviewed_at, "Datum lektoriranja"
+    .answer= f.date_select :reviewed_at
+    
+    .question= f.label :reviewer_notes, "Opombe lektorja"
+    .answer= f.text_area :reviewer_notes
+    
+    = f.hidden_field :reviewer_id
+    
+    = f.submit :Shrani

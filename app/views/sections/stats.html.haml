@@ -1,0 +1,37 @@
+= title "Statistika"
+
+%table{:cellpadding => 0, :cellspacing => 0}
+  %thead
+    %tr
+      %th
+      %th št. domačij
+      %th % domačij
+      %th št. objavljeni
+      %th % objavljeni
+      %th št. naročil
+      %th % naročil
+      %th kom. naročenih
+      %th zaslužek
+  %tbody
+    - collection.each do |s|
+      %tr
+        %th= s.name
+        %td= s.pages.count
+        %td= format_percentage divide(s.pages.count, s.book.pages.count)
+        %td= s.pages.published.count
+        %td= format_percentage divide(s.pages.published.count, s.pages.count)
+        %td= s.pages.map(&:orders).flatten.size
+        %td= format_percentage divide(s.pages.map(&:orders).flatten.size, s.pages.published.count)
+        %td= s.pages.map(&:orders).flatten.sum(&:quantity)
+        %td= number_to_currency s.pages.map(&:orders).flatten.sum(&:total)
+        
+    %tr.foot
+      %th= current_book.title
+      %td= current_book.pages.count
+      %td 100%
+      %td= current_book.pages.published.count
+      %td= format_percentage divide(current_book.pages.published.count, current_book.pages.count)
+      %td= current_book.orders.size
+      %td= format_percentage divide(current_book.orders.size, current_book.pages.count)
+      %td= current_book.quantity
+      %td= number_to_currency current_book.worth

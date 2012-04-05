@@ -1,0 +1,9 @@
+= error_messages_for :book_kind
+
+- form_for resource do |f|
+  %fieldset
+    .question= f.label :name, "Naziv tipa"
+    .answer= f.text_field :name
+      
+  %fieldset
+    .submit= f.submit :Shrani

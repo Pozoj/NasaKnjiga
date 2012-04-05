@@ -1,0 +1,97 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+a:focus {
+  outline: 0; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  line-height: 20px; }
+
+a {
+  text-decoration: none; }
+  a:focus {
+    outline: 1px dotted invert; }
+
+hr {
+  border: 0 #ccc solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0; }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .hn {
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight: bold; }
+
+h6, .h6 {
+  font-size: 14px;
+  line-height: 20px; }
+
+h5, .h5 {
+  font-size: 16.333px;
+  line-height: 25px; }
+
+h4, .h4 {
+  font-size: 19.056px;
+  line-height: 30px; }
+
+h3, .h3 {
+  font-size: 22.231px;
+  line-height: 35px; }
+
+h2, .h2 {
+  font-size: 25.937px;
+  line-height: 40px; }
+
+h1, .h1 {
+  font-size: 30.26px;
+  line-height: 45px; }
+
+ol {
+  list-style: decimal; }
+
+ul {
+  list-style: square; }
+
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-top: 20px;
+  margin-bottom: 20px; }

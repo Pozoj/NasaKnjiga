@@ -1,0 +1,97 @@
+BOOK
+ - kind (book kind)
+ - title (string)
+ - subdomain (string)
+ - prices (price)
+ - published (boolean)
+ - password (string)
+ - sections (section)
+
+
+PRICE
+ - book (book)
+ - quantity (integer) [0 or nil is default]
+ - price_without_tax (decimal)
+
+
+BOOK KIND
+ - name (string)
+ - page kinds (page kind)
+
+SECTION
+ - name (string)
+ - book (book)
+ - pages (page)
+
+PAGE
+ - section (section)
+ - kind (page kind)
+ - title (string)
+ - displayed_title (string)
+ - subtitle (string)
+ - photos (photos
+ - street (string)
+ - street_number (integer)
+ - street_suffix (string)
+ - post (post)
+ - phone (string)
+ - mobile (string)
+ - mobile_published (boolean)
+ - email (string)
+ - email_published (boolean)
+ - website (string)
+ - body (text)
+ - body_original (text)
+ - data_from (string)
+ - owner (user)
+ - printed (boolean)
+ - notes (text)
+ - published (boolean)
+ - reviewed (boolean)
+ - review_date (datetime)
+ - reviewer_notes (text)
+ - reviewer (user)
+
+ORDER
+ - page (page)
+ - company (string)
+ - name (string)
+ - surname (string)
+ - street (string)
+ - street_number (integer)
+ - street_suffix (string)
+ - post (post)
+ - phone (string)
+ - email (string)
+ - pickup (pickup)
+ - quantity (integer)
+ - price (decimal)
+ - shipped_at (datetime)
+ - vat_id (string)
+ 
+
+PAGE KIND
+  - name (string)
+  - book kind (book kind)
+  - page fields (string)
+
+PHOTO
+ - photo (paperclip)
+ - page (page)
+ 
+POST
+ - name (string)
+
+
+USER
+ - kind (user kind)
+ - email (string)
+ - password_hash (string)
+ - name (string)
+ - surname (string)
+ 
+
+USER KIND [admin, reviewer, editor]
+ - name (string)
+
+PICKUP [In person, By post]

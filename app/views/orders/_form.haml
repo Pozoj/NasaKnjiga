@@ -1,0 +1,91 @@
+- javascripts "image_upload", "live_preview", "orders"
+
+%ol#local_nav
+  %li= link_to_local "Kontaktni podatki", :contact
+  %li= link_to_local "Fotografija", :photos
+  %li= link_to_local "Naročilo", :order
+
+
+= render "photos/new"
+
+= error_messages_for :order
+
+- form_for [resource.page, resource], :html => {:multipart => true, :id => "order_form"} do |f|
+  .data
+    %fieldset.contact
+      %a{:name => "contact"}
+      %legend Kontaktni podatki
+      .one
+        .question= f.label :name, "Ime"
+        .answer= f.text_field :name
+  
+        .question= f.label :surname, "Priimek"
+        .answer= f.text_field :surname
+      
+        .question= f.label :phone, "Telefon"
+        .answer= f.text_field :phone
+
+        .question= f.label :email, "E-mail"
+        .answer= f.text_field :email
+      
+      .two
+        .question= f.label :street, "Ulica"
+        .answer= f.text_field :street
+  
+        .question= f.label :street_number, "Ulična številka"
+        .answer= f.text_field :street_number
+  
+        .question= f.label :street_suffix, "Ulična pripona"
+        .answer= f.text_field :street_suffix
+        
+        .question= f.label :post_id, "Pošta"
+        .answer= f.collection_select :post_id, Post.all, :id, :name, :include_blank => true
+      = link_to_top
+  
+  
+    %fieldset.company
+      %legend Podjetje
+  
+      .question= f.label :company, "Podjetje"
+      .answer= f.text_field :company
+  
+      .question= f.label :vat_id, "ID za DDV"
+      .answer= f.text_field :vat_id
+  
+  %fieldset.preview
+    %legend Predogled
+    = render "pages/preview"
+  .order    
+    %fieldset.photos
+      %a{:name => "photos"}
+      %legend Fotografija na naslovnici
+      - editor_section do
+        = link_to "Dodaj fotografijo", new_order_photo_path(resource), :id => "new_image_link"
+      = render "shared/progress"
+      = render "photos/list"
+      = link_to_top
+
+    %fieldset.details
+      %a{:name => "order"}
+      %legend Naročilo
+  
+      .question= f.label :book_title, "Napis na naslovnici"
+      .answer= f.text_field :book_title
+  
+      .question= f.label :quantity, "Količina"
+      .answer= f.text_field :quantity
+  
+      .question= f.label :discount, "Popust"
+      .answer= f.text_field :discount
+  
+      .question= f.label :pickup_id, "Prevzemno mesto"
+      .answer= f.collection_select :pickup_id, Pickup.all, :id, :name, :include_blank => true
+      = link_to_top
+    
+    %fieldset.calculation
+      %legend Kalkulator
+      #calculation= render "orders/calculation_small"
+      = link_to_top
+  
+  %fieldset.submit
+    .submit= f.submit :Shrani

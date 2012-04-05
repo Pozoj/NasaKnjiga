@@ -1,0 +1,255 @@
+$columns: 12
+$width: 960
+$gutter: 20
+
+$yellow: #e3a924
+$red: #9b2b1a
+$book_red: red
+$book_green: #197b30
+$lite_gray: #efefef
+
+=header_button
+  line-height: 26px
+
+=h3_user
+  h3, .user
+    float: left
+  h3
+    +header_button
+  .user
+    margin: 20px 10px
+
+=h2_user
+  +clearfix
+  h2, .user
+    float: left
+  h2
+    +header_button
+  .user
+    margin: 20px 10px
+
+=legend_user
+  legend, .user
+    float: left
+  legend
+    +header_button
+  .user
+    margin: 10px 0
+
+=a_user
+  &>a, .user
+    float: left
+  &>a
+    display: block
+    +header_button
+  .user
+    margin: 0
+    a
+      display: table
+      line-height: 20px
+
+=span_user
+  &>span, .user
+    float: left
+  &>span
+    display: block
+    +header_button
+  .user
+    margin: 0
+    a
+      display: table
+      line-height: 20px
+
+=photo_picker
+  +clearfix
+  li
+    margin: 0
+      right: $gutter + px
+      bottom: $gutter + px
+    padding: 0
+    list-style: none
+    float: left
+    label
+      display: block
+      text-align: center
+      img
+        display: block
+        cursor: pointer
+
+=serif
+  font-family: Times, Times New Roman, serif
+
+=sans
+  font-family: Helvetica, Arial, sans-serif
+
+=uitype
+  font-family: Helvetica, Arial, sans-serif
+
+=bold
+  font-weight: bold
+
+=normal
+  font-weight: normal
+
+=ultra_small_text
+  font-size: 12px
+
+=small_text
+  font-size: 14px
+
+=mid_text
+  font-size: 16px
+
+=large_text
+  font-size: 20px
+
+=crisp_shadow
+  text-shadow: 0px 1px 1px white
+
+=large_crisp_shadow
+  text-shadow: 1px 2px 1px white
+
+=lite_shadow
+  text-shadow: 0px 1px 1px #dddddd
+
+=mid_shadow
+  text-shadow: 0px 1px 1px #bababa
+
+=dark_shadow
+  text-shadow: 0px 1px 1px #272727
+
+=radius
+  border-radius: 7px
+  -moz-border-radius: 7px
+  -webkit-border-radius: 7px
+
+=small_radius
+  border-radius: 5px
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+
+=micro_radius
+  border-radius: 3px
+  -moz-border-radius: 3px
+  -webkit-border-radius: 3px
+
+=button
+  display: table
+  background-color: $yellow
+  padding: 2.5px 5px
+  color: black !important
+  +bold
+  +sans
+  +ultra_small_text
+  +small_radius
+  +crisp_shadow
+  border: 1px solid transparent
+  &:hover
+    background-color: white
+    border: 1px solid #cccccc
+    text-decoration: none !important
+
+=small_button
+  +button
+  width: auto
+  background: url(/images/backgrounds/70white.png)
+  border-color: #cccccc
+  &:hover
+    background: url(/images/backgrounds/50black.png)
+    color: white !important
+    +dark_shadow
+
+@import lib/grid_system.sass
+@import head.sass
+@import menu.sass
+@import flash.sass
+@import admin.sass
+@import forms.sass
+@import tables.sass
+@import data_display.sass
+@import preview.sass
+@import calculation.sass
+@import loader.sass
+@import image_upload.sass
+
+@import sections.sass
+@import pages.sass
+@import books.sass
+@import book_kinds.sass
+@import orders.sass
+@import users.sass
+@import static.sass
+@import sessions.sass
+@import pickups.sass
+
+body
+  +container
+  +clearfix
+  background: url(/images/backgrounds/body_gradient.png) repeat-x fixed
+
+#header
+  +wrapper(12)
+  +radius
+  height: 200px
+  position: relative
+  background: url(/images/head/book.jpg) no-repeat left 40%
+  color: white
+  margin:
+    top: $gutter + px
+    bottom: $gutter + px
+
+#content
+  +wrapper(12)
+  +radius
+  +clearfix
+  position: relative
+  background: white
+  padding-bottom: $gutter + px
+  a
+    color: #224ebb
+    &:hover
+      text-decoration: underline
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>div, &>table, &>ul, &>ol, &>form
+    margin:
+      left: $gutter + px
+      right: $gutter + px
+  h1, h2, h3
+    +mid_shadow
+  ol, ul
+    &.collection
+      li
+        +mid_text
+        list-style: square inside
+  ol#local_nav
+    +clearfix
+    li
+      float: left
+      list-style: none
+      a
+        +small_button
+        margin-right: 10px
+  a.to_top
+    clear: both
+    width: 60px !important
+    +small_button
+  a.to_back
+    +small_button
+    clear: both
+    margin:
+      top: $gutter * 2 + px
+      left: $gutter + px
+
+#footer
+  +wrapper(12)
+  margin:
+    top: 25px
+  padding:
+    bottom: 50px
+  text-align: center
+  +sans
+  color: #999999
+  p
+    +large_crisp_shadow
+    a
+      color: inherit
+      +bold

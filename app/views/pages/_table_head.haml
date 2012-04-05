@@ -1,0 +1,23 @@
+%thead
+  %tr
+    %th= ordered_link "ID#", "id"
+    %th= ordered_link "Foto", "photo_id"
+    %th= ordered_link "Naziv", "title"
+    %th= ordered_link "Ulica", "street"
+    %th= ordered_link "Ul. št.", "street_number"
+    %th
+      %span Ul. pr.
+    %th
+      %span Telefon
+    - if current_user.reviewer?
+      %th
+        %span Lekt.
+      %th
+        %span
+          Opom. lekt.
+    - if editor?
+      %th 
+        %span Opombe
+      %th= ordered_link "Natis.", "printed"
+      %th= ordered_link "Objav.", "published"
+    %th

@@ -1,0 +1,13 @@
+= error_messages_for :photo
+
+- form_for [parent, resource], :html => {:multipart => true} do |f|
+  %fieldset
+    %legend Fotografija
+    
+    .question= f.label :photo, "Fotografija"
+    .answer= f.file_field :photo
+    
+    = hidden_field_tag :edit_page, params[:edit_page]
+    
+    .submit= f.submit :Shrani
+    

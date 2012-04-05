@@ -1,0 +1,33 @@
+- if book = current_book
+- elsif @order.page and book = @order.page.book
+- elsif book = @page.book
+
+#preview
+  - if controller_name != "orders"
+    %ul#preview_switcher
+      %li.cover= link_to "Naslovnica"
+      %li.inside= link_to "Tipična stran"
+  
+  #cover{cover_style(book)}
+    %h1#title= book.kind
+    %h2#subtitle= book
+    - title = @order ? @order.book_title : @page.title
+    %h3.display_title= title
+    - photo = @order ? @order.photo : @page.photo
+    .visual
+      - if photo and photo.photo.file?
+        = image_tag photo.photo.url(:book)
+  
+  - unless @order
+    #inside{inside_style}
+      .header
+        .number 15
+        .book= book
+        .kind= book.kind
+      %h1.display_title= title
+      #display_body= @page.body
+      .visual
+        - if photo and photo.photo.file?
+          = image_tag photo.photo.url(:book)
+      .footer= @section
+      

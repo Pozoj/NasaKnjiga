@@ -1,0 +1,25 @@
+#users-show
+  .data
+    +wrapper(4)
+  .permissions
+    +wrapper(4)
+    fieldset
+      margin: 0
+      legend
+        padding-top: 0
+      ul
+        list-style: none
+        li
+          ul
+            margin:
+              top: $gutter / 2 + px
+              bottom: $gutter / 2 + px
+            li
+              margin-left: $gutter + px
+
+#users-new, #users-edit, #users-update, #users-create
+  fieldset.photos
+    +legend_user
+  #user_photos
+    clear: both
+    +photo_picker

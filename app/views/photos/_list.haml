@@ -1,0 +1,8 @@
+- type = resource.class.to_s
+- collection = resource.new_record?? Photo.find_orphaned_by_type(type) : resource.photos
+- if type == "Order" and @page and not @page.photos.empty?
+  - collection = collection + @page.photos
+
+%ul.photo_list{:id => "#{type.downcase}_photos"}
+  - collection.each do |photo|
+    = photo_picker photo, :type => type.downcase, :chosen_id => resource.photo_id

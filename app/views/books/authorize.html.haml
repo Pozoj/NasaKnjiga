@@ -1,0 +1,11 @@
+= title "Dostop do knjige #{resource}"
+%p Ta knjiga je zaščitena. Za dostop prosimo vnesite geslo.
+
+- form_tag authorize_process_book_path(resource) do |f|
+  %fieldset
+    %legend Dostop
+    
+    .question= label_tag :password, "Geslo za dostop"
+    .answer= text_field_tag :password
+    
+    .submit= submit_tag :Naprej

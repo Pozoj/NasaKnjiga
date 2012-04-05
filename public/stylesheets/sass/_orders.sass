@@ -1,0 +1,62 @@
+#orders-new, #orders-edit, #orders-create, #orders-update
+  form
+    .one, .two
+      +wrapper(3)
+    fieldset.contact
+      +wrapper(6)
+    fieldset.company
+      +prefix(1)
+      +wrapper(3)
+    fieldset.preview
+      +wrapper(6)
+    .data
+      +clearfix
+      border-bottom: 1px dotted #cccccc
+      margin-bottom: $gutter + px
+      padding-bottom: $gutter + px
+    div.order
+      +wrapper(4)
+      +prefix(1)
+      fieldset.photos
+        margin-top: 0
+        +legend_user
+        .question
+          clear: both
+        ul
+          clear: both
+          +photo_picker
+
+#orders-index
+  .book
+    +clearfix
+    table
+      +wrapper(8)
+    .book_info
+      h2
+        +prepend(3)
+        +mid_text
+
+#orders-show
+  .data
+    +wrapper(5)
+    .half
+      +wrapper(2)
+      &.first
+        +wrapper(3)
+  .visual
+    +wrapper(6)
+  #preview
+  #calculation
+    clear: both
+    margin-top: $gutter + px
+    h2
+      +mid_text
+      margin-bottom: 0
+
+table.orders
+  tbody
+    tr.sum
+      td
+        +bold
+        border-bottom: 0 !important
+        border-top: 2px solid #efefef

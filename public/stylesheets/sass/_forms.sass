@@ -1,0 +1,77 @@
+form
+  .half
+    &.first
+      +wrapper(6)
+      +suffix(1)
+      &.narrow
+        +wrapper(3)
+    &.second
+      +wrapper(4)
+  fieldset.submit
+    clear: both
+    margin: 0
+  div.submit
+    border-top: 2px solid #efefef
+    margin: 25px 0
+    padding: 25px 0
+    &.top
+      border-top: 0
+      border-bottom: 2px solid #efefef
+  textarea
+    width: 350px
+    height: 150px
+    &.long
+      height: 350px
+    &.straight
+      font-size: 16px
+      width: auto !important
+      height: auto !important
+  legend
+    +mid_text
+    +bold
+    +sans
+    +mid_shadow
+    display: block
+    padding:
+      top: $gutter / 2 + px
+      bottom: $gutter / 2 + px
+  h2
+    margin:
+      top: $gutter / 2 + px
+      bottom: $gutter / 2 + px
+  fieldset
+    margin: 25px 0
+    position: relative
+    &.delimiter
+      border-bottom: 1px dotted #cccccc
+    .question, .answer, .attribute
+      margin:
+        top: $gutter / 2 + px
+        bottom: $gutter / 2 + px
+    .question
+      .fieldWithErrors
+        color: $red
+    .answer
+      .fieldWithErrors
+        background-color: $red
+        padding: 1px
+        display: table
+    .to_top
+      display: none !important
+      position: absolute
+      bottom: 10px
+      right: 0px
+      z-index: 999
+    &:hover
+      .to_top
+        display: table !important
+
+.errorExplanation
+  padding-bottom: $gutter + px
+  margin-bottom: $gutter + px
+  border: 2px solid red
+    color: $red
+    left: 0
+    right: 0
+  h2
+    font-size: 20px

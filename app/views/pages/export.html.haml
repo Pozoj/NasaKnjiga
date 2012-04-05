@@ -1,0 +1,68 @@
+= title "Tabela strani"
+
+%table{:cellpadding => 0, :cellspacing => 0}
+  %thead
+    %tr
+      %th ID
+      %th Knjiga
+      %th Sekcija
+      %th Naslov str.
+      %th Podnaslov
+      %th Naslov
+      %th Pošta
+      %th Telefon
+      %th T. obj.
+      %th Mobilnik
+      %th M. obj.
+      %th Email
+      %th E. obj.
+      %th WWW
+      %th Ime kont.
+      %th Priime. kont.
+      %th Pod. zbral
+      %th Natisnjeno
+      %th Opom.
+      %th Dovoli obj.
+      %th Lektorirano
+      %th Lekt. dat.
+      %th Opom. lekt.
+      %th Lektor
+      %th Vpisano
+      %th Zadnja sprememba
+      %th Št. naročil
+      %th Kom. nar.
+
+  %tbody    
+    - collection.each do |page|
+      %tr
+        %td= page.id
+        %td= page.book.title
+        %td= page.section.name
+        %td= page.title
+        %td= page.subtitle
+        %td
+          = page.street
+          = page.street_number
+          = page.street_suffix
+        %td= page.post
+        %td= page.phone
+        %td= format_boolean page.phone_published
+        %td= page.mobile
+        %td= format_boolean page.mobile_published
+        %td= page.email
+        %td= format_boolean page.email_published
+        %td= page.website
+        %td= page.contact_name
+        %td= page.contact_surname
+        %td= page.data_from
+        %td= format_boolean page.printed
+        %td= page.notes
+        %td= format_boolean page.published
+        %td= format_boolean page.reviewed
+        %td= page.reviewed_at
+        %td= page.reviewer_notes
+        %td= page.reviewer
+        %td= page.created_at.to_s :short
+        %td= page.updated_at.to_s :short
+        %td= page.orders.count
+        %td= page.orders.map(&:quantity).inject(0) { |sum, ammount| sum + ammount }

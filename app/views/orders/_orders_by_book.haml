@@ -1,0 +1,7 @@
+- collection.group_by { |order| order.page.book }.each do |book, orders|
+  .book
+    .book_info
+      %h2= book
+      %ul
+        = render "books/book", :object => book
+    = render :partial => "orders/list", :locals => {:collection => orders}

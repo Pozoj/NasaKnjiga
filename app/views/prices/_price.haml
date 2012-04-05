@@ -1,0 +1,7 @@
+%tr
+  %td
+    - if price.default_quantity
+      vse ostale
+    - else
+      = price.quantity
+  %td= number_to_currency price.price_without_tax

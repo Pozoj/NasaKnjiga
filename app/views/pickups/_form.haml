@@ -1,0 +1,8 @@
+- form_for resource do |f|
+  %fieldset
+    = f.error_messages
+    
+    .question= f.label :name, "Mesto"
+    .answer= f.text_field :name
+    
+    .submit= f.submit :Shrani

@@ -1,0 +1,135 @@
+- javascripts "pages", "image_upload", "live_preview"
+= render "photos/new"
+
+%ol#local_nav
+  %li= link_to_local "Splošno", :basic, :kind_id
+  %li= link_to_local "Besedilo", :body, :kind_id
+  %li= link_to_local "Fotografija", :photos, :kind_id
+  %li= link_to_local "Kontaktni podatki", :contact, :kind_id
+  %li= link_to_local "Administrativna polja", :admin, :kind_id
+
+= error_messages_for :page
+
+- form_for [resource.section, resource], :html => {:multipart => true, :id => "page_edit"} do |f|
+  %fieldset.submit
+    .submit.top= f.submit "Shrani stran"
+
+  %fieldset.delimiter.basic
+    %a{:name => "basic"}
+    %legend Splošno
+    - unless resource.kind_id
+      .question= f.label :kind_id, "Tip strani"
+      .answer= f.collection_select :kind_id, current_book.kind.page_kinds, :id, :name, :prompt => "Prosimo izberite tip strani!"
+    - else
+      = f.hidden_field :kind_id
+  
+    .question= f.label :title, resource.field(:title)
+    .answer= f.text_field :title
+      
+    - if resource.field_wanted? :subtitle
+      .question= f.label :subtitle, resource.field(:subtitle)
+      .answer= f.text_field :subtitle
+    
+    = link_to_top :kind_id
+    
+
+  %fieldset.delimiter.body
+    %a{:name => "body"}  
+    %legend Besedilo
+    .question= f.label :body, resource.field(:body)
+    .answer= f.text_area :body
+    
+    .question= f.label :body_original, "#{resource.field(:body)} original"
+    .answer= f.text_area :body_original
+    
+    = link_to_top :kind_id
+  
+
+  %fieldset.delimiter.photos
+    %a{:name => "photos"}
+    %legend Fotografija na naslovnici
+    - editor_section do
+      = link_to "Dodaj fotografijo", new_page_photo_path(resource, :edit_page => true), :id => "new_image_link"
+    = render "shared/progress"
+    = render "photos/list", :f => f
+    = link_to_top :kind_id
+
+  %fieldset.delimiter.contact
+    %a{:name => "contact"}
+    %legend Kontaktni podatki
+    .question= f.label :contact_name, resource.field(:contact_name)
+    .answer= f.text_field :contact_name
+    
+    .question= f.label :contact_surname, resource.field(:contact_surname)
+    .answer= f.text_field :contact_surname
+    
+    - if resource.field_wanted? :address
+      .question= f.label :street, resource.field(:street)
+      .answer= f.text_field :street
+      .question= f.label :street_number, resource.field(:street_number)
+      .answer= f.text_field :street_number
+      .question= f.label :street_suffix, resource.field(:street_suffix)
+      .answer= f.text_field :street_suffix
+    
+      .question= f.label :post_id, resource.field(:post_id)
+      .answer= f.collection_select :post_id, Post.all, :id, :name, :include_blank => true
+
+    - if resource.field_wanted? :phone
+      .question= f.label :phone, resource.field(:phone)
+      .answer= f.text_field :phone
+      .answer_question
+        %span.answer= f.check_box :phone_published
+        %span.question= f.label :phone_published, resource.field(:phone_published)
+      
+
+    - if resource.field_wanted? :mobile
+      .question= f.label :mobile, resource.field(:mobile)
+      .answer= f.text_field :mobile
+      .answer_question
+        %span.answer= f.check_box :mobile_published
+        %span.question= f.label :mobile_published, resource.field(:mobile_published)
+    
+    - if resource.field_wanted? :email
+      .question= f.label :email, resource.field(:email)
+      .answer= f.text_field :email
+      .answer_question
+        %span.answer= f.check_box :email_published 
+        %span.question= f.label :email_published, resource.field(:email_published)
+
+    - if resource.field_wanted? :website
+      .question= f.label :website, resource.field(:website)
+      .answer= f.text_field :website
+      
+    = link_to_top :kind_id
+  
+  - if admin? or can_edit?(resource)
+    %fieldset.notes
+      %a{:name => "admin"}
+      %legend Administrativna polja
+      
+      - if admin?
+        .question= f.label :permalink, resource.field(:permalink)
+        .answer= f.text_field :permalink
+    
+        .question= f.label :data_from, resource.field(:data_from)
+        .answer= f.text_field :data_from
+    
+      - if can_edit? resource
+        .question= f.label :notes, resource.field(:notes)
+        .answer= f.text_area :notes
+        
+        .answer_question
+          %span.answer= f.check_box :published
+          %span.question= f.label :published, resource.field(:published)
+        
+      - if admin?
+        .answer_question
+          %span.answer= f.check_box :printed
+          %span.question= f.label :printed, resource.field(:printed)
+
+      = link_to_top :kind_id
+    
+  %fieldset.submit
+    .submit= f.submit "Shrani stran"
+
+= render "preview"

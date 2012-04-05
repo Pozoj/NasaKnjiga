@@ -1,0 +1,19 @@
+#calculation_small
+  - field resource, :quantity
+  
+  - if resource.discount?
+    .field 
+      .description Cena izvoda (-#{resource.discount}%)
+      .value= number_to_currency resource.price_with_discount
+  - else
+    .field 
+      .description Cena izvoda
+      .value= number_to_currency resource.price
+    
+  .field 
+    .description DDV na izvod
+    .value= number_to_currency resource.tax_per_book
+  
+  .field.total
+    .description Skupaj
+    .value= number_to_currency resource.total

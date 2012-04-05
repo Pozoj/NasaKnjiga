@@ -1,0 +1,6 @@
+= title "Manjkajoče ulične številke"
+%ul
+  - @missing_street_numbers.each do |number|
+    %li== #{@section} #{number}
+    
+= link_to_back

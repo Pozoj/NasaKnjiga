@@ -1,0 +1,98 @@
+#header
+  h1
+    a
+      display: table
+      padding:
+        left: $gutter + px
+        right: $gutter + px
+      color: white
+      +dark_shadow
+    margin-bottom: 0
+  h2
+    position: absolute
+    bottom: 27px
+    +dark_shadow
+    +small_text
+    color: white
+    margin: 0
+    padding:
+      left: $gutter + px
+      right: $gutter + px
+  h3
+    margin: 0
+    position: absolute
+    bottom: 10px
+    a
+      +dark_shadow
+      +mid_text
+      display: block
+      color: #cccccc
+      padding:
+        left: $gutter + px
+        right: $gutter + px
+  #authentication
+    position: absolute
+    background: url(/images/backgrounds/50to100black.png) repeat-y
+    top: 20px
+    right: 20px
+    padding: $gutter / 4 + px
+      right: 0
+    +radius
+    +sans
+    +ultra_small_text
+    .logged_in
+      float: left
+      line-height: 28px
+      margin-right: 20px
+      padding-left: $gutter / 4 + px
+      a
+        display: inline
+        color: $yellow
+        +bold
+    .log_in, .log_out
+      float: right
+      a
+        +button
+    & *
+      margin: 0
+    &.active
+      .log_in a
+        background: white
+      -moz-border-radius-topleft: 0
+      -webkit-border-top-left-radius: 0
+      -moz-border-radius-bottomleft: 0
+      -webkit-border-bottom-left-radius: 0
+      #new_session_form
+        display: block
+    #new_session_form
+      +radius
+      display: none
+      z-index: 999
+      position: absolute
+      left: -180px
+      top: 0px
+      background: url(/images/backgrounds/50black.png)
+      width: 160px
+      -moz-border-radius-topright: 0
+      -webkit-border-top-right-radius: 0
+      padding: $gutter / 2 + px
+      fieldset
+        padding: 0
+        margin: 0
+        .question
+          padding: 0
+          margin: 0
+        .answer
+          padding: 0
+          margin: 0
+            bottom: 10px
+          input
+            width: 155px
+        .submit
+          border: 0
+          margin: 0
+          padding: 0
+            top: 10px
+          text-align: left
+          input
+            width: auto

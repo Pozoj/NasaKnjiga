@@ -1,0 +1,87 @@
+- javascripts "books"
+= error_messages_for :book
+
+%ol#local_nav
+  %li= link_to_local "Tip knjige", :type
+  %li= link_to_local "Osnovno", :general
+  %li= link_to_local "O knjigi", :about
+  %li= link_to_local "Naslovnica", :cover
+
+- form_for resource, :html => {:multipart => true} do |f|
+  .half.first
+    %fieldset.delimiter
+      %a{:name => "type"}
+      %legend Tip knjige
+      .question= f.label :kind_id, "Tip knjige"
+      .answer= f.collection_select :kind_id, BookKind.all, :id, :name, :include_blank => true
+      .question= f.label :cols, "Št. črk v vrstici"
+      .answer= f.text_field :cols
+      .question= f.label :cols, "Št. vrstic"
+      .answer= f.text_field :rows
+      
+      = link_to_top
+      
+  
+    %fieldset.delimiter
+      %a{:name => "general"}
+      %legend Osnovno
+      .question= f.label :title, "Naslov"
+      .answer= f.text_field :title
+      
+      .question= f.label :subdomain, "Domena"
+      .answer.subdomain
+        = f.text_field :subdomain
+        \.nasaknjiga.si
+      
+      .question= f.label :email, "E-mail naslov"
+      .answer.email
+        = f.text_field :email
+        @pozoj.si
+      
+      .question= f.label :published, "Knjiga vidna?"
+      .answer= f.check_box :published
+      - password_style = resource.published ? {:style => "display: none;"} : {}
+      #password_toggle{password_style}
+        .question= f.label :password, "Geslo"
+        .answer= f.text_field :password
+        
+      = link_to_top
+      
+        
+    %fieldset.delimiter
+      %a{:name => "about"}
+      %legend O knjigi
+      %p 
+        Besedilo napisano tu, se bo pojavilo v meniju 
+        == &raquo;#{link_to 'O storitvi', about_path}&laquo;.
+      .question= f.label :about, "O knjigi"
+      .answer= f.text_area :about
+      
+      = link_to_top      
+    
+    %fieldset
+      %a{:name => "cover"}
+      %legend Naslovnica
+      - if resource.cover.file?
+        - label_caption = "Nova naslovnica"
+        = image_tag resource.cover.url(:small)
+      - else
+        - label_caption = "Naslovnica"
+      .question= f.label :cover, label_caption
+      .answer= f.file_field :cover
+      
+      = link_to_top
+
+  .half.second
+    %fieldset.prices
+      %legend Cenik
+      - admin_section do
+        = link_to_add_fields "Dodaj ceno", f, :prices
+
+      - f.fields_for :prices, resource.prices do |builder|
+        = render "price_fields", :f => builder
+        
+      = link_to_top
+        
+  %fieldset.submit
+    .submit= f.submit :Shrani

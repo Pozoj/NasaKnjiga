@@ -1,0 +1,19 @@
+= title current_book
+
+- user_section do
+  - if can_edit?(current_book)
+    = link_to "Dodaj novo sekcijo", new_section_path
+  - if designer? and can_see?(current_book)
+    = link_to "Izvoz naročil", try_export_sections_path
+  - if admin?
+    = link_to "Print naročil za pošiljanje", print_orders_path(@section)
+
+- if admin? or (editor? and can_edit?(current_book))
+  %p Sekcije lahko premikate z vlečenjem za njihove številke.
+  - klass = "move_enabled"
+
+
+%ol{:id => "sections_list", :class => "#{klass}"}= render collection
+- if admin?
+  = sortable_element "sections_list", :url => sections_sort_path(current_book), :complete => visual_effect(:highlight, "sections_list")
+

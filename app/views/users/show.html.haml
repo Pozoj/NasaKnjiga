@@ -1,0 +1,33 @@
+= title resource
+
+- admin_section do
+  = link_to "Odstrani", resource_path, :method => :delete, :confirm => destroy_confirmation(resource)
+  = link_to "Uredi", edit_resource_path
+
+.data
+  - field resource, :name
+  - field resource, :surname
+  - field resource, :email
+  .field
+    .description Vrsta uporabnika
+    .value= resource.kind
+
+.permissions
+  - unless resource.admin?
+    - form_tag user_permissions_path(resource) do
+      %fieldset
+        %legend Dovoljenja
+        %ul
+          - Book.all.each_with_index do |book, idb|
+            %li
+              = check_box_tag "permission[#{idb}][book_id]", book.id, resource.can_edit?(book) 
+              = label_tag "permission[#{idb}][book_id]", book
+              %ul
+                - book.pages.each_with_index do |page, idp|
+                  %li
+                    = check_box_tag "permission[#{idb}][page_ids][#{idp}]", page.id, resource.can_edit?(page) 
+                    = label_tag "permission[#{idb}][page_ids][#{idp}]", page
+
+      .submit= submit_tag :Shrani
+      
+= link_to_back

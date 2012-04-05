@@ -1,0 +1,20 @@
+.price
+  .price_input
+    .question= f.label :price_without_tax, "Cena brez DDV"
+    .answer= f.text_field :price_without_tax
+  
+  - quantity_style = f.object.default_quantity ? {:style => "display: none"} : {}
+  - quantity_default_style = f.object.default_quantity ? {} : {:style => "display: none"}
+  .quantity{quantity_style}
+    .question= f.label :quantity, "Količina"
+    .answer= f.text_field :quantity
+    
+  .quantity_default{quantity_default_style}
+    .answer
+      = f.check_box :default_quantity
+      = f.label :default_quantity, "Privzeta cena"
+  
+  = f.hidden_field :_destroy
+  
+  - admin_section do
+    = link_to_function "Odstrani", "remove_fields(this)"

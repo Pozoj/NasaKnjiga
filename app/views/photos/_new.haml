@@ -1,0 +1,12 @@
+- type = resource.class.to_s
+- url = resource.new_record?? photos_path : send("#{type.downcase}_photos_path", resource)
+
+- form_for [resource, resource.photos.build], :url => url, :html => {:multipart => true, :id => "image_upload_form", :style => "display: none; position: absolute;"} do |fp|
+  %fieldset.close
+    = link_to "<span>Zapri</span>", "#", :id => "image_upload_form_close"
+    = hidden_field_tag "X-Progress-ID"
+    = hidden_field_tag "photo[photographable_type]", type
+  %fieldset
+    %legend Naloži fotografijo
+    .answer.file= fp.file_field :photo
+    .submit= fp.submit "Naloži"

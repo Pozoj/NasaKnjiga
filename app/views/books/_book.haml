@@ -1,0 +1,9 @@
+- if book.published? or (admin? or can_see?(book))
+  %li.book{cover_style(book, :shelf)}
+    - book_link = admin?? book : root_path(:subdomain => book.subdomain)
+  
+    %h2= link_to book, book_link
+    %h3= link_to book.kind, book_link
+  
+    - unless book.published?
+      (skrito)

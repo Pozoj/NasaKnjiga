@@ -1,0 +1,23 @@
+= title resource
+- admin_section do
+  = link_to "Odstrani", resource, :method => :delete, :confirm => destroy_confirmation(resource)
+  = link_to "Uredi", edit_resource_path
+  
+%p 
+  Tip knjige
+  == "#{resource}"
+  - unless resource.page_kinds.empty?
+    ima
+    == #{pluralize_page_kinds(resource.page_kinds.count)}.
+  - else
+    nima nobene tipične strani. Dodajte jo spodaj.
+
+.page_kinds
+  %h2 Tipične strani
+  - admin_section do
+    = link_to "Dodaj tip strani", new_book_kind_page_kind_path(resource)
+    
+  %ol= render resource.page_kinds
+  
+
+= link_to_back

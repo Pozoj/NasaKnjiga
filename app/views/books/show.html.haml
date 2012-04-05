@@ -1,0 +1,58 @@
+= title resource
+%h2= resource.kind
+
+- admin_section do
+  = link_to "Odstrani", resource_path, :method => :delete, :confirm => destroy_confirmation(resource)
+  = link_to "Uredi", edit_resource_path
+  = link_to "Izvozi strani", export_pages_path(:subdomain => resource.subdomain)
+  = link_to "Statistika", stats_sections_path(:subdomain => resource.subdomain)
+  
+
+%p
+  Ta knjiga ima
+  = pluralize_pages resource.pages.count
+  strani in 
+  == #{pluralize_sections resource.sections.count}.
+  = link_to "Odpri knjigo", root_path(:subdomain => resource.subdomain)
+
+.prices
+  %h3 Cenik
+  %table
+    %thead
+      %tr
+        %th 
+          %span Količina
+        %th 
+          %span Cena brez DDV
+    %tbody= render resource.prices
+
+- unless resource.orders.empty?
+  .orders  
+    %h3 Naročila
+    %table.orders
+      %thead
+        %tr
+          %th
+            %span Sekcija
+          %th
+            %span Kol.
+          %th
+            %span Cena
+      %tbody
+        - resource.orders.group_by { |order| order.page.section }.each do |section, orders|
+          %tr
+            %td= section
+            %td= orders.quantity
+            %td= number_to_currency orders.worth
+        %tr.sum
+          %td Skupaj
+          %td= resource.orders.quantity
+          %td= number_to_currency resource.orders.worth
+          %td
+
+- if resource.cover.file?
+  .cover
+    %h3 Naslovnica
+    %p= image_tag resource.cover.url(:small)
+
+= link_to_back

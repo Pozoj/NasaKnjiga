@@ -1,0 +1,6 @@
+%li
+  %label{:for => id}
+    = image_tag photo.photo.url(:square)
+    .book_sized_url
+      = photo.photo.url(:book)
+    = radio_button_tag "#{type}[photo_id]", photo.id, checked

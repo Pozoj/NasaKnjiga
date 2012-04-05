@@ -1,0 +1,61 @@
+#pages-new, #pages-edit, #pages-create, #pages-update
+  #content
+    form
+      +wrapper(5)
+      fieldset.photos
+        +legend_user
+        #page_photos
+          clear: both
+          +photo_picker
+      #review
+        .answer.body_original
+          :color #666
+        textarea
+          :width 500px
+          :height 350px
+
+#pages-show
+  .data
+    +wrapper(5)
+  .photos
+    ul
+      +clearfix
+      clear: both
+      .photo
+        position: relative
+        width: 150px
+        height: 150px
+        list-style: none
+        float: left
+        margin:
+          right: $gutter + px
+          bottom: $gutter + px
+        .user
+          position: absolute
+          bottom: 10px
+          right: 10px
+          margin: 0
+  .orders
+    +h3_user
+    table
+      clear: both
+  #preview
+    margin-top: $gutter + px
+
+#pages-index, #pages-search
+  ul
+    li
+      +clearfix
+      list-style: none
+      margin: $gutter / 2 + px 0
+      img
+        display: block
+        margin-right: $gutter / 2 + px
+      a, span
+        +mid_text
+        height: 35px
+        line-height: 35px
+        display: block
+        float: left
+      span
+        color: #666666

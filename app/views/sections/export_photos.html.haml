@@ -1,0 +1,48 @@
+- javascripts "counter"
+= title "Izvoz naročil"
+
+#timer
+  %p 
+    Izvažam
+    %strong= @orders.size
+    naročil. Prosimo počakajte 1 minuto...
+  %p
+    Še
+    %span#seconds 59
+    sekund...
+    
+#success
+  - if @fail_count > 0
+    %p
+      Pri izvozu je prišlo do napake pri
+      = @fail_count
+      naročilih.
+  - else
+    %p
+      Izvoz naročil je uspel, prenesete jih lahko tukaj:
+      %strong= link_to @archive_name, "/assets/export/#{@archive_name}.zip"
+    
+  %table
+    %thead
+      %tr
+        %th 
+          %span Fotografija
+        %th 
+          %span Naslov strani
+        %th
+          %span
+            Ulica
+        %th
+          %span
+            Ul. št
+        %th
+          %span
+            Ul. prip.
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.photo.short_name
+          %td= order.book_title
+          %td= order.page.street
+          %td= order.page.street_number
+          %td= order.page.street_suffix

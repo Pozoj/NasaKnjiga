@@ -1,0 +1,8 @@
+= error_messages_for :section
+
+- form_for resource do |f|
+  %fieldset
+    .question= f.label :name, "Naziv sekcije"
+    .answer= f.text_field :name
+    
+    .submit= f.submit :Shrani

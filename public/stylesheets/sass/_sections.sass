@@ -1,0 +1,53 @@
+#sections-index
+  ol#sections_list
+    li
+      +large_text
+      position: relative
+      width: 50%
+      margin-left: 27px
+      line-height: 30px
+      .section_content
+        position: absolute
+        right: 0
+        top: 0
+        background: white
+        z-index: 100
+        padding-left: 5px
+        +small_text
+      .dots
+        +ultra_small_text
+    &.move_enabled
+      li
+        cursor: move
+        .section_title
+          .user
+            display: none
+            position: absolute
+            background: white
+            right: 0
+            top: 0
+        &:hover
+          .user
+            display: block
+          .section_content
+            display: none
+        a
+          cursor: pointer
+
+#sections-stats
+  table
+    td, th
+      :text-align left
+      :padding 4px 12px 4px 2px
+      +sans
+    tr.foot
+      th, td
+        background: #efefef
+        :border 0
+          :top 2px solid #ccc
+        :padding 10px 12px 10px 2px
+        :font-weight bold
+
+#seconds
+  :font-size 18px
+  :font-weight bold

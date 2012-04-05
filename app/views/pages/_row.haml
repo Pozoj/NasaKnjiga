@@ -1,0 +1,26 @@
+%tr{:class => cycle("", "odd")}
+  %td= row.id
+  %td
+    - if row.photo and row.photo.photo.file?
+      = image_tag row.photo.photo.url(:mini_square)
+  %td= row.title
+  %td= row.street
+  %td= row.street_number
+  %td= row.street_suffix
+  %td= row.phone
+  - if current_user.reviewer?
+    %td= row.reviewed?? "DA" : "NE"
+    %td= truncate row.reviewer_notes, :length => 64
+  - if editor?
+    %td
+      = truncate row.notes, :length => 64
+    %td= row.printed?? "DA" : "NE"
+    %td= row.published?? "DA" : "NE"
+  %td
+    - user_section do
+      = link_to "O", [row.section, row]
+      - if can_edit? row
+        = link_to "U", edit_section_page_path(row.section, row)
+      - if designer? and row.photo
+        = link_to "F", row.photo.photo.url
+  

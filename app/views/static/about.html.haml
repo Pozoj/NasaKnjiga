@@ -1,0 +1,47 @@
+.about
+  = title "O storitvi"
+  
+  - if current_book and current_book.about
+    = current_book.about_html
+  - else
+    %p
+      Spletna stran Moj kraj je pripomoček, da lažje in hitreje nastane knjiga Moj kraj. 
+      Spletna stran določenega kraja je praviloma “aktivna” le toliko časa, dokler ni pripravljeno gradivo za izdajo knjige. Ko se prične priprava na izid knjige, spletna stran ni več dosegljiva.
+
+    %p
+      Hiše/domačije, ki so na spletni strani bodo s tekstom in sliko domačije istočasno predstavljene tudi v knjigi Moj kraj.
+
+    %p
+      Knjiga je presek nekega trenutka v kraju, knjiga je lahko lepo darilo prijateljem, svojcem, ki so včasih bivali v tem kraju, sedaj pa bivajo nekje drugje. 
+      Knjiga je namenjena domačinom določenega kraja, z enim samim namenom, da se med sabo bolje spoznamo. Velikokrat sosed žal ne pozna soseda.
+
+    %p
+      To kar je zapisano, ostane!
+
+    %p
+      &mdash; Peter Rebernik
+  
+.contact
+  %h1 Kontakt
+
+  = image_tag "pozoj_logo.png"
+  %p
+    %strong Pozoj d.o.o.
+  %p
+    Efenkova 61
+    %br
+    3320 Velenje
+  %p
+    T: 03/ 897 01 22
+    %br
+    F: 03/ 897 01 24
+    %br
+    M: 041/ 61 03 71
+
+  %p
+    - if current_book
+      = link_to_email "#{current_book.email}@pozoj.si"
+    - else
+      = link_to_email "info@pozoj.si"
+      %br
+    = link_to_self "http://pozoj.si"

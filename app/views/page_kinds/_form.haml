@@ -1,0 +1,29 @@
+= error_messages_for :page_kind
+
+- form_for [resource.book_kind, resource] do |f|
+  %fieldset.delimiter
+    .question= f.label :name, "Naziv tipa strani"
+    .answer= f.text_field :name
+    
+  .half.first
+    %fieldset
+      %legend Aktivna polja
+      %p Tukaj nastavite katera polja naj bodo aktivna pri vpisovanju takšnih strani.
+    
+      - [:subtitle, :address, :phone, :mobile, :email, :website].each do |attribute|
+        .attribute
+          = check_box_tag "page_kind[page_fields][#{attribute}]", attribute, (resource.page_fields? and resource.page_fields.include?(attribute))
+          = label_tag "page_kind[page_fields][#{attribute}]", resource.field_name(attribute)
+  .half.second
+    %fieldset
+      %legend Nazivi polj
+      %p 
+        Za lažjo uporabo, lahko nekaj polj poimenuješ po svoje. 
+        Npr.:
+        %em Naslov kot Ime domačije
+      - f.fields_for :translation do |tf|
+        = render "translations/form", :f => tf
+      
+  %fieldset.submit
+    .submit= f.submit "Shrani"
+  

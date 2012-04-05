@@ -1,0 +1,28 @@
+= title resource
+
+- admin_section do
+  = link_to "Odstrani naročilo", resource_path, :method => :delete, :confirm => "Ste prepričani?"
+  = link_to "Uredi naročilo", edit_resource_path
+  - if admin?
+    = link_to "Print naročila za pošiljanje", print_orders_path(:order_id => resource.id)
+
+.data
+  .half.first
+    - field resource, :name
+    - field resource, :company
+    - field resource, :full_address
+    - field resource, :email    
+  
+  .half.second
+    - field resource, :surname
+    - field resource, :vat_id
+    - field resource, :phone
+  
+  #calculation
+    %h2 Izračun
+    = render "calculation_big"
+  
+  
+= render "pages/preview"
+
+= link_to_back

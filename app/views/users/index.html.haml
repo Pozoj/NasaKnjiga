@@ -1,0 +1,23 @@
+= title "Uporabniki"
+
+%table
+  %thead
+    %tr
+      %th 
+        %span Ime
+      %th 
+        %span Priimek
+      %th 
+        %span Up. ime
+      %th 
+        %span Pooblastila
+      %th 
+        %span Last. strani
+      %th 
+        %span Ur. knjig
+      %th 
+        %span Ur. strani
+  %tbody= render collection
+  
+- admin_section do
+  = link_to "Dodaj uporabnika", new_resource_path

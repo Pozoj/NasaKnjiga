@@ -1,0 +1,26 @@
+= title "Kontakt"
+
+.logo
+  = image_tag "pozoj_logo.png"
+  
+.contact
+  %p
+    %strong Pozoj d.o.o.
+  %p
+    Efenkova 61
+    %br
+    3320 Velenje
+  %p
+    T: 03/ 897 01 22
+    %br
+    F: 03/ 897 01 24
+    %br
+    M: 041/ 61 03 71
+  
+  %p
+    - if current_book
+      = link_to_email "#{current_book.email}@pozoj.si"
+    - else
+      = link_to_email "info@pozoj.si"
+      %br
+    = link_to_self "http://pozoj.si"

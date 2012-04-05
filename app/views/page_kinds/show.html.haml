@@ -1,0 +1,15 @@
+= title resource
+
+- admin_section do
+  = link_to "Odstrani", resource_path, :method => :delete, :confirm => destroy_confirmation(resource)
+  = link_to "Uredi", edit_resource_path
+  
+.field
+  .description Polja
+  .value= format_page_fields resource, resource.page_fields
+  
+.field
+  .description Poimenovanja polj
+  .value= resource.translation.strings
+  
+= link_to_back @book_kind

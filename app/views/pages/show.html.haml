@@ -1,0 +1,66 @@
+- javascripts "live_preview"
+
+= title resource
+%h2= resource.book_title
+
+- user_section do
+  - if designer? and resource.photo
+    = link_to "Prenesi fotografijo", resource.photo.photo.url
+  - if can_edit? resource
+    - if current_user.reviewer?
+      = link_to "Lektoriraj stran", edit_resource_path
+    - else
+      = link_to "Odstrani stran", resource_path, :method => :delete, :confirm => destroy_confirmation(resource)
+      = link_to "Uredi stran", edit_resource_path
+  
+
+.data
+  - if resource.subtitle?
+    %h3= resource.subtitle
+
+  - if resource.address
+    .field
+      .description Naslov
+      .value= resource.address
+
+  - if resource.phone? and (resource.phone_published? or admin?)
+    .field
+      .description= resource.field :phone
+      .value= resource.phone
+
+  - if resource.mobile? and (resource.mobile_published? or admin?)
+    .field
+      .description= resource.field :mobile
+      .value= resource.mobile
+
+  - if resource.email? and (resource.email_published? or admin?)
+    .field
+      .description= resource.field :email
+      .value= link_to_email resource.email
+
+  - if resource.website?  
+    .field
+      .description= resource.field :website
+      .value= link_to_self resource.website
+
+  - if resource.body?
+    .field
+      .description= resource.field :body
+      .value= resource.body_html
+
+  .section.photos
+    %h3 Fotografije
+    %ul= render resource.photos
+
+  - if admin?
+    .section.orders
+      %h3 Naročila
+      - editor_section do
+        = link_to "Novo naročilo", new_page_order_path(resource)
+
+      - unless resource.orders.empty?
+        = render :partial => "orders/list", :locals =>  { :collection => resource.orders }
+      
+= render "preview"
+
+= link_to_back

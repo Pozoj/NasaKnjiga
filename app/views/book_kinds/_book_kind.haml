@@ -1,0 +1,6 @@
+%tr
+  %td= book_kind
+  %td= book_kind.books.count
+  %td
+    - admin_section do
+      = link_to "Odpri", book_kind

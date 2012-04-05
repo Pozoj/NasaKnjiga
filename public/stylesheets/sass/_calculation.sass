@@ -1,0 +1,33 @@
+#calculation
+  #calculation_small, #calculation_big
+    .field
+      +clearfix
+      .description, .value
+        line-height: 20px
+        margin: 0
+        padding: 0
+      .description
+        float: left
+        +ultra_small_text
+      .value
+        float: right
+      &.total
+        padding-top: $gutter / 2 + px
+        margin-top: $gutter / 2 + px
+        border-top: 2px solid #cccccc
+        .description
+          +mid_text
+  #calculation_small
+    +wrapper(3)
+    margin-bottom: $gutter + px
+  #calculation_big
+    +wrapper(4)
+    .field
+      &.subtotal.first
+        border-top: 2px solid #cccccc
+        padding-top: $gutter / 2 + px
+        margin-top: $gutter / 2 + px
+      &.total
+        padding-top: $gutter + px
+        margin-top: $gutter + px
+        border-top-width: 4px

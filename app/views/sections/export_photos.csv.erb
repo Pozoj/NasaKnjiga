@@ -1,0 +1,13 @@
+<%=%w{
+        NazivFoto
+        NaslovKnjige
+      }.join("\t") %>
+<%= FasterCSV.generate(:col_sep => "\t") do |csv|
+  @photos.each do |p|
+    csv << [ 
+              p.short_name,
+              p.photographable.title
+            ]
+  end
+end %>
+

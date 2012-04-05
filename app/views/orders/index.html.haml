@@ -1,0 +1,8 @@
+= title "Naročila"
+
+- if current_book?
+  - user_section do
+    = link_to "Izvozi naročila", export_orders_path
+  = render :partial => "orders/list", :locals => {:collection => collection}
+- else
+  = render "orders/orders_by_book"

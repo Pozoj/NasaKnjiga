@@ -1,0 +1,64 @@
+#menu
+  position: absolute
+  bottom: 10px
+  right: 10px
+  ol
+    +clearfix
+    margin: 0
+    padding: 0
+    li
+      float: left
+      position: relative
+      list-style: none
+      padding: $gutter / 2 + px
+        left: 0
+      a
+        display: block
+        background: url(/images/backgrounds/50white.png)
+        color: black
+        padding: 2.5px 5px
+        +sans
+        +ultra_small_text
+        +bold
+        +mid_shadow
+        +small_radius
+        &:hover
+          background: white
+        .books &.books
+          background: white
+        .sections &.sections
+          background: white
+        .pages &.sections
+          background: white
+        .book_kinds &.book_kinds
+          background: white
+        .orders &.orders
+          background: white
+        .pickups &.pickups
+          background: white
+        .users &.users
+          background: white
+        .static &.about
+          background: white
+      &.active
+        a
+          background: white
+          padding-top: 12px
+          margin-top: -10px
+          -moz-border-radius-topright: 0
+          -webkit-border-top-right-radius: 0
+          -moz-border-radius-topleft: 0
+          -webkit-border-top-left-radius: 0
+        form
+          display: block
+          -moz-border-radius-bottomright: 0
+          -webkit-border-bottom-right-radius: 0
+      form
+        +small_radius
+        display: none
+        background: url(/images/backgrounds/100to50white.png) repeat-x bottom left
+        padding: $gutter / 4 + px
+        position: absolute
+        top: -30px
+        right: $gutter / 2 + px
+        z-index: 999

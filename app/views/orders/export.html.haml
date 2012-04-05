@@ -1,0 +1,64 @@
+= title "Tabela naročil"
+
+%table{:cellpadding => 0, :cellspacing => 0}
+  %thead
+    %tr
+      %th{:rowspan => 2} ID
+      %th{:rowspan => 2} Naslov knjige
+      %th{:colspan => 7} Stran
+      %th{:rowspan => 2} Podjetje
+      %th{:rowspan => 2} Ime
+      %th{:rowspan => 2} Priimek
+      %th{:rowspan => 2} Naslov
+      %th{:rowspan => 2} Pošta
+      %th{:rowspan => 2} Telefon
+      %th{:rowspan => 2} Email
+      %th{:rowspan => 2} Prevzem
+      %th{:rowspan => 2} Kom.
+      %th{:rowspan => 2} Subtotal
+      %th{:rowspan => 2} Total
+      %th{:rowspan => 2} DDV
+      %th{:rowspan => 2} Popust
+      %th{:rowspan => 2} Poslano dne
+      %th{:rowspan => 2} ID za DDV
+      %th{:rowspan => 2} Datum nar.
+    %tr
+      %th Naslov strani
+      %th Email
+      %th E. obj.
+      %th Telefon
+      %th T. obj.
+      %th Mobilnik
+      %th M. obj.
+
+  %tbody    
+    - collection.each do |order|
+      %tr
+        %td= order.id
+        %td= order.book_title
+        %td= order.page.title
+        %td= order.page.email
+        %td= format_boolean order.page.email_published
+        %td= order.page.phone
+        %td= format_boolean order.page.phone_published
+        %td= order.page.mobile
+        %td= format_boolean order.page.mobile_published
+        %td= order.company
+        %td= order.name
+        %td= order.surname
+        %td
+          = order.street
+          = order.street_number
+          = order.street_suffix
+        %td= order.post
+        %td= order.phone
+        %td= order.email
+        %td= order.pickup
+        %td= order.quantity
+        %td= number_to_currency order.subtotal
+        %td= number_to_currency order.total
+        %td= number_to_currency order.tax
+        %td= format_percentage order.discount
+        %td= order.shipped_at
+        %td= order.vat_id
+        %td= order.created_at.to_s :short

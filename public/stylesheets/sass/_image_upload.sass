@@ -1,0 +1,47 @@
+#image_upload_progress
+  +small_radius
+  border: 1px solid #666666
+  width: 120px
+  margin: 11px 1px 7px 5px
+  float: left
+  #progress_bar
+    background-color: $yellow
+    span
+      padding: 3.5px 5px
+      color: black !important
+      +bold
+      +sans
+      +ultra_small_text
+      +crisp_shadow
+
+#image_upload_form
+  +radius
+  z-index: 999
+  border: 2px solid #666666
+  background: url(/images/backgrounds/70white.png)
+  width: auto !important
+  padding: $gutter / 2 + px
+    top: 0
+    bottom: 0
+  fieldset
+    margin: 0
+  .submit
+    border: 0
+    margin: 0
+    padding:
+      top: $gutter / 2 + px
+      bottom: $gutter / 2 + px
+  #image_upload_form_close
+    display: block
+    z-index: 999
+    position: absolute
+    top: 0
+    right: -5px
+    width: 19px
+    height: 19px
+    padding: 5px
+    background: url(/images/ui/close_button.png) no-repeat center center
+    &:hover
+      background-image: url(/images/ui/close_button_hover.png)
+    span
+      display: none

@@ -1,0 +1,25 @@
+= title "Uporabniški račun"
+
+.field
+  .description Prijavljen kot
+  .value= current_user
+
+.field
+  .description Pooblastila
+  .value= format_user_kind current_user.kind
+
+- if current_user.admin?
+  %p Urejate lahko vse knjige, strani in uporabnike.
+
+- unless current_user.permissions.empty?
+  %h2 Dovoljenja
+  - unless current_user.book_permissions.empty?
+    %p Imate dovoljenje za dostop do naslednjih knjig:
+    %ul
+      - current_user.book_permissions.each do |book|
+        %li= Book.find book
+  - unless current_user.page_permissions.empty?
+    %p Imate dovoljenje za dostop do naslednjih strani:
+    %ul
+      - current_user.page_permissions.each do |page|
+        %li= Page.find page

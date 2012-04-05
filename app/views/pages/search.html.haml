@@ -1,0 +1,15 @@
+= title "Iskanje"
+
+- form_tag search_pages_path, :method => :get do |f|
+  .answer_question
+  .answer
+    = text_field_tag :q, params[:q]
+    = submit_tag "Išči"
+
+- if collection and !collection.empty?
+  - if admin? or editor?
+    %table#pages
+      = render "table_head"
+      %tbody= render :partial => "row", :collection => collection
+  - else
+    %ul= render collection

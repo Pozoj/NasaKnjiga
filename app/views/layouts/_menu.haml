@@ -1,0 +1,19 @@
+#menu
+  %ol
+    - if current_book?
+      %li= link_to "Sekcije", sections_path, :class => "sections"
+      %li
+        = link_to "Iskanje", search_pages_path, :class => "search"
+        - form_tag search_pages_path, :method => :get do |f|
+          .answer
+            = text_field_tag :q, params[:q]        
+    - else
+      - if admin?
+        %li= link_to "Tipi knjig", book_kinds_path(:subdomain => false), :class => "book_kinds"
+      %li= link_to "Knjige", books_path(:subdomain => false), :class => "books"
+      - if admin?
+        %li= link_to "Uporabniki", users_path(:subdomain => false), :class => "users"
+        %li= link_to "Prevzemna mesta", pickups_path(:subdomain => false), :class => "pickups"
+    - if admin?  
+      %li= link_to "Naročila", orders_path(:subdomain => current_book?? current_book.subdomain : false), :class => "orders"
+    %li= link_to "O storitvi", about_path, :class => "about"

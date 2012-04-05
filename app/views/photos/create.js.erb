@@ -1,0 +1,13 @@
+<%
+type = resource.photographable_type.downcase
+dom_id = "#{type}_photo_id_#{resource.id}"
+%>
+var photo_html = '<%= escape_javascript photo_picker(resource) %>';
+var photos_container = $("<%= type %>_photos");
+
+if ( photos_container ) {
+  photos_container.insert({bottom: photo_html});
+  new Effect.Highlight(photos_container);
+  Event.addBehavior.reload();
+  BookPreview.handlePhotoChange($("<%= dom_id %>"))
+}

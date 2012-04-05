@@ -1,0 +1,45 @@
+#content
+  table
+    td, th a, th span
+      padding: 0
+        top: 5px
+        right: 22.5px
+        left: 2.5px
+      vertical-align: middle
+    thead
+      tr
+        th
+          a, span
+            +sans
+            +mid_text
+            display: block
+            text-align: left
+            border-bottom: 2px solid #eeeeee
+            color: black
+            white-space: nowrap
+          a
+            &:hover
+              background-color: $lite_gray
+            &.ascending, &.descending
+              background-color: $lite_gray
+              background-position: right center
+              background-repeat: no-repeat
+            &.ascending
+              background-image: url(/images/ui/ascending.png)
+            &.descending
+              background-image: url(/images/ui/descending.png)
+    tbody
+      tr
+        &:hover
+          td
+            background: $lite_gray
+        td
+          border-bottom: 1px solid #eeeeee
+          .user
+            white-space: nowrap
+            width: 100px
+            a
+              display: block
+              padding: 1px 5px
+            margin: 0 !important
+            padding: 0

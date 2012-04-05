@@ -1,0 +1,7 @@
+%tr
+  %td= order.page
+  %td= order.quantity
+  %td= number_to_currency order.total
+  %td
+    - admin_section do
+      = link_to "Odpri", page_order_path(order.page, order)

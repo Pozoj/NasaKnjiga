@@ -1,0 +1,78 @@
+#books-edit, #books-new, #books-update, #books-create
+  .answer.email, .answer.subdomain
+    +sans
+    +ultra_small_text
+    input
+      width: 75px
+  fieldset.prices
+    +legend_user
+    .user
+      float: right
+      margin-bottom: 0
+    legend
+      padding: 7px 0
+    p.instructions
+      clear: both
+    .price
+      +clearfix
+      clear: both
+      position: relative
+      border-bottom: 1px dotted #cccccc
+      &:hover .user
+        display: block
+        position: absolute
+        top: 5px
+        right: 0px
+      .user
+        display: none
+        float: none
+        clear: both
+        margin: 0
+      .price_input, .quantity
+        +wrapper(2)
+        input
+          width: 90%
+      .quantity_default
+        clear: both
+
+#books-show
+  div.orders
+    +wrapper(5)
+  div.prices
+    +wrapper(3)
+  div.cover
+    +wrapper(2)
+
+#books-index, #orders-index
+  ul
+    li.book
+      +wrapper(3)
+      height: 240px
+      position: relative
+      h2, h3
+        +serif
+        text-shadow: none
+        margin: 0
+        padding: 0
+        a
+          display: block
+          position: absolute
+          left: 20px
+          width: 150px
+          &:hover
+            text-decoration: none
+      h2
+        line-height: 16px
+        a
+          top: 50px
+          color: $book_green
+          font:
+            size: 13px
+      h3
+        a
+          color: $book_red
+          top: 22px
+          font:
+            weight: normal
+            size: 11px
+            style: italic

@@ -1,0 +1,16 @@
+%table.orders
+  %thead
+    %tr
+      %th
+        %span Stran
+      %th
+        %span Kol.
+      %th
+        %span Cena
+  %tbody
+    = render collection
+    %tr.sum
+      %td Skupaj
+      %td= collection.quantity
+      %td= number_to_currency collection.worth
+      %td

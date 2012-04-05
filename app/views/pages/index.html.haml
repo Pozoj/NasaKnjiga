@@ -1,0 +1,14 @@
+= title "Strani v #{@section}"
+
+- if collection and !collection.empty?
+  - if current_user?
+    %p Za sortiranje kliknite na nazive stolpcev.
+    %table#pages
+      = render "table_head"
+      %tbody= render :partial => "row", :collection => collection
+  - else
+    %ul= render collection
+  
+- editor_section(current_book) do
+  = link_to "Dodaj", new_resource_path
+  = link_to "Manjkajoče", missing_section_pages_path(@section)

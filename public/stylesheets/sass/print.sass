@@ -1,0 +1,109 @@
+$columns: 12
+$width: 960
+$gutter: 20
+
+=serif
+  font-family: Times, Times New Roman, serif
+
+=sans
+  font-family: Helvetica, Arial, sans-serif
+
+=uitype
+  font-family: Helvetica, Arial, sans-serif
+
+=bold
+  font-weight: bold
+
+=normal
+  font-weight: normal
+
+=ultra_small_text
+  font-size: 12px
+
+=small_text
+  font-size: 14px
+
+=mid_text
+  font-size: 16px
+
+=large_text
+  font-size: 20px
+
+=crisp_shadow
+  text-shadow: 0px 1px 1px white
+
+=large_crisp_shadow
+  text-shadow: 1px 2px 1px white
+
+=lite_shadow
+  text-shadow: 0px 1px 1px #dddddd
+
+=mid_shadow
+  text-shadow: 0px 1px 1px #bababa
+
+=dark_shadow
+  text-shadow: 0px 1px 1px #272727
+
+@import "data_display"
+
+#header, #footer, #spinner, #authentication, #preview_switcher, #cover h1, #cover h2, #cover h3, #inside, .user, .to_back, .admin_head
+  :display none
+
+body
+  :font-size 12px
+  +sans
+
+.data
+  .left
+    :float left
+  .right
+    :width 380px
+    text-align: right
+    img
+      :margin-top 5px
+      :width 150px
+      :height 111px
+    :float right
+    overflow: auto
+    .field
+      width: 180px
+      margin-left: 10px
+      float: right
+  .body.field
+    :clear both
+    p
+      :margin 0.6em 0
+    
+.page
+  :padding-top 100px
+  page-break-after: always
+  .field
+    .description
+      :font-size 14px
+      :margin-top 10px
+      :margin-bottom 2.5px
+    .value
+      :margin-top 2.5px
+      :margin-bottom 10px
+
+.address
+  p
+    :margin 2px 0
+
+.notice
+  :margin 20px 0
+    :top 80px
+  :padding-bottom 20px
+  :border-bottom 2px solid #ddd
+  
+  .signature
+    :margin-top -5px
+    :padding-left 400px
+  
+  ul
+    li
+      strong
+        :display block
+  
+hr
+  :visibility hidden
