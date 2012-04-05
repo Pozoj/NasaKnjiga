@@ -11,12 +11,10 @@ Rails::Initializer.run do |config|
   config.i18n.default_locale = :sl
   config.gem 'RedCloth', :lib => 'redcloth'
   config.gem 'haml',  :version => "2.2.24"
-  config.gem 'thoughtbot-pacecar',
-    :lib     => "pacecar",
-    :source  => 'http://gems.github.com'
+  config.gem 'pacecar'
   config.gem "inherited_resources", :version => "1.0.6"
   config.gem "will_paginate", :version => "2.3.16"
-  config.gem "paperclip"
+  config.gem "paperclip", :version => "2.7.0"
   config.gem "subdomain-fu"
   config.gem "whenever"
   config.gem 'spreadsheet'

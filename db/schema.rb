@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(:version => 20110404180357) do
     t.string   "email"
     t.integer  "page_id"
     t.integer  "pickup_id"
-    t.integer  "quantity",                                    :default => 1
-    t.decimal  "subtotal",      :precision => 8, :scale => 2
-    t.decimal  "total",         :precision => 8, :scale => 2
-    t.decimal  "tax",           :precision => 8, :scale => 2
-    t.integer  "discount",                                    :default => 0
+    t.integer  "quantity",      :default => 1
+    t.decimal  "subtotal"
+    t.decimal  "total"
+    t.decimal  "tax"
+    t.integer  "discount",      :default => 0
     t.datetime "shipped_at"
     t.string   "vat_id"
     t.integer  "photo_id"
@@ -130,15 +130,16 @@ ActiveRecord::Schema.define(:version => 20110404180357) do
     t.datetime "updated_at"
   end
 
-  create_table "posts", :id => false, :force => true do |t|
-    t.integer "id"
-    t.string  "name"
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "prices", :force => true do |t|
     t.integer  "book_id"
     t.integer  "quantity"
-    t.decimal  "price_without_tax", :precision => 8, :scale => 2
+    t.decimal  "price_without_tax"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

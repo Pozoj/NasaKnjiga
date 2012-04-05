@@ -10,3 +10,5 @@ public/assets/
 webrat-*.html
 rerun.txt
 public/stylesheets/*.css
+.rvmrc
+config/setup_load_paths.rb
