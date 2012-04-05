@@ -6,9 +6,10 @@ tmp/**/*
 nbproject
 config/database.yml
 db/*.sqlite3
-public/assets/
 webrat-*.html
 rerun.txt
 public/stylesheets/*.css
+public/assets
+public/system
 .rvmrc
 config/setup_load_paths.rb
