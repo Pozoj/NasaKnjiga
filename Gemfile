@@ -11,3 +11,7 @@ gem "whenever"
 gem 'spreadsheet', '0.6.9'
 gem 'rubyzip', '0.9.9'
 gem 'mime-types', '1.25.1'
+
+group :development do
+  gem 'sqlite3'
+end
