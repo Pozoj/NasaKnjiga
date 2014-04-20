@@ -1,5 +1,5 @@
 source 'https://rubygems.org' 
-gem 'rails', '2.3.17' 
+gem 'rails', '2.3.18' 
 gem 'RedCloth', :require => 'redcloth'
 gem 'haml', "2.2.24"
 gem 'pacecar', '1.5.3'
