@@ -1,6 +1,6 @@
 source 'https://rubygems.org' 
 gem 'rails', '2.3.17' 
-gem 'RedCloth', :lib => 'redcloth'
+gem 'RedCloth', :require => 'redcloth'
 gem 'haml', "2.2.24"
 gem 'pacecar'
 gem "inherited_resources", "1.0.6"
