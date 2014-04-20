@@ -14,7 +14,7 @@ GEM
     activesupport (2.3.18)
     chronic (0.10.2)
     cocaine (0.4.2)
-    haml (2.2.24)
+    haml (2.0.10)
     has_scope (0.5.1)
     inherited_resources (1.0.6)
       has_scope (~> 0.5.0)
@@ -52,7 +52,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  haml (= 2.2.24)
+  haml (= 2.0.10)
   inherited_resources (= 1.0.6)
   mime-types (= 1.25.1)
   pacecar (= 1.5.3)

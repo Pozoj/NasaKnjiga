@@ -1,7 +1,7 @@
 source 'https://rubygems.org' 
 gem 'rails', '2.3.18' 
 gem 'RedCloth', :require => 'redcloth'
-gem 'haml', "2.2.24"
+gem 'haml', "2.0.10"
 gem 'pacecar', '1.5.3'
 gem "inherited_resources", "1.0.6"
 gem "will_paginate", "2.3.16"

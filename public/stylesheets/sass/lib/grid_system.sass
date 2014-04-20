@@ -14,8 +14,34 @@ $unit: px !default
 
 // Importing default rules
 
-@import reset.sass
-@import typography.sass
+@import reset
+@import typography
+
+
+// Clearing floats
+
+=clear
+  clear: both
+  display: block
+  overflow: hidden
+  visibility: hidden
+  width: 0
+  height: 0
+
+=clearfix
+  display: inline-block
+  display: block
+  &:after
+    clear: both
+    content: " "
+    display: block
+    font-size: 0
+    line-height: 0
+    visibility: hidden
+    width: 0
+    height: 0
+  * html &
+    height: 1%
 
 // From here on in, sizes are calculated arithmetically
 
@@ -97,30 +123,6 @@ $column: $width / $columns - $gutter
 =last
   margin-right: 0
 
-// Clearing floats
-
-=clear
-  clear: both
-  display: block
-  overflow: hidden
-  visibility: hidden
-  width: 0
-  height: 0
-
-=clearfix
-  display: inline-block
-  display: block
-  &:after
-    clear: both
-    content: " "
-    display: block
-    font-size: 0
-    line-height: 0
-    visibility: hidden
-    width: 0
-    height: 0
-  * html &
-    height: 1%
 
 // You can undo inline floating and margins for special cases,
 // like when you want to position an object absolutely or statically

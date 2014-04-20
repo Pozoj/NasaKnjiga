@@ -1,0 +1,27 @@
+div.section { border-top: 1px dotted #cccccc; }
+
+.field .description { font-weight: bold; font-family: Helvetica, Arial, sans-serif; font-size: 16px; margin-top: 20px; margin-bottom: 5px; }
+.field .value { margin-top: 5px; margin-bottom: 20px; }
+
+#header, #footer, #spinner, #authentication, #preview_switcher, #cover h1, #cover h2, #cover h3, #inside, .user, .to_back, .admin_head { display: none; }
+
+body { font-size: 12px; font-family: Helvetica, Arial, sans-serif; }
+
+.data .left { float: left; }
+.data .right { width: 380px; text-align: right; float: right; overflow: auto; }
+.data .right img { margin-top: 5px; width: 150px; height: 111px; }
+.data .right .field { width: 180px; margin-left: 10px; float: right; }
+.data .body.field { clear: both; }
+.data .body.field p { margin: 0.6em 0; }
+
+.page { padding-top: 100px; page-break-after: always; }
+.page .field .description { font-size: 14px; margin-top: 10px; margin-bottom: 2.5px; }
+.page .field .value { margin-top: 2.5px; margin-bottom: 10px; }
+
+.address p { margin: 2px 0; }
+
+.notice { margin: 20px 0; margin-top: 80px; padding-bottom: 20px; border-bottom: 2px solid #dddddd; }
+.notice .signature { margin-top: -5px; padding-left: 400px; }
+.notice ul li strong { display: block; }
+
+hr { visibility: hidden; }

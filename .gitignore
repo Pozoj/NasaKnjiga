@@ -8,7 +8,6 @@ config/database.yml
 db/*.sqlite3
 webrat-*.html
 rerun.txt
-public/stylesheets/*.css
 public/assets
 public/system
 .rvmrc
