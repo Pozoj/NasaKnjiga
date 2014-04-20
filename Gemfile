@@ -9,5 +9,5 @@ gem "paperclip", "2.8.0"
 gem "subdomain-fu"
 gem "whenever"
 gem 'spreadsheet', '0.6.9'
-gem 'rubyzip'
+gem 'rubyzip', '0.9.9'
 gem 'mime-types', '1.25.1'
