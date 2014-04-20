@@ -1,6 +1,9 @@
-- if book = current_book
-- elsif @order.page and book = @order.page.book
-- elsif book = @page.book
+- if book 
+  - book = current_book
+- elsif @order.page
+  - book = @order.page.book
+- elsif @page.book
+  - book = @page.book
 
 #preview
   - if controller_name != "orders"
