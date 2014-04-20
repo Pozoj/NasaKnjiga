@@ -14,6 +14,7 @@ gem 'mime-types', '1.25.1'
 
 group :production do
   gem 'thin'
+  gem 'mysql'
 end
 
 group :development do

@@ -12,3 +12,4 @@ public/assets
 public/system
 .rvmrc
 config/setup_load_paths.rb
+.bundle
