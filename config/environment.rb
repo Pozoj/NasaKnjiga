@@ -1,4 +1,4 @@
-RAILS_GEM_VERSION = '2.3.12' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.18' unless defined? RAILS_GEM_VERSION
 
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -9,16 +9,6 @@ Rails::Initializer.run do |config|
   }
   config.time_zone = 'Ljubljana'
   config.i18n.default_locale = :sl
-  config.gem 'RedCloth', :lib => 'redcloth'
-  config.gem 'haml',  :version => "2.2.24"
-  config.gem 'pacecar'
-  config.gem "inherited_resources", :version => "1.0.6"
-  config.gem "will_paginate", :version => "2.3.16"
-  config.gem "paperclip", :version => "2.7.0"
-  config.gem "subdomain-fu"
-  config.gem "whenever"
-  config.gem 'spreadsheet'
-  config.gem 'hoptoad_notifier'
 end
 
 SubdomainFu.override_only_path = true
